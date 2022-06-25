@@ -9,11 +9,11 @@ def exec_time(f=None, *, measure='time', precision=3):
       return partial(exec_time, measure=measure, precision=precision)
 
    if measure == 'time':
-      time_func = time.time
+      time_func = time.perf_counter
    elif measure == 'cpu':
       time_func = time.process_time
    else:
-      time_func = time.time
+      time_func = time.perf_counter
       print('[exec_time] wrong measurement value, using default')
 
 
@@ -28,4 +28,3 @@ def exec_time(f=None, *, measure='time', precision=3):
 
       return result
    return wrap
-   
